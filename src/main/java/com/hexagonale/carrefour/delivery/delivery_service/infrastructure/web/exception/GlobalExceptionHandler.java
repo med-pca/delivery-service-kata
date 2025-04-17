@@ -17,7 +17,7 @@ public class GlobalExceptionHandler {
     private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<?> handleNotFound(ResourceNotFoundException ex, ServerWebExchange exchange) {
+    public ResponseEntity<Map<String, Object>> handleNotFound(ResourceNotFoundException ex, ServerWebExchange exchange) {
         log.warn("404 Not Found at {}: {}", exchange.getRequest().getPath(), ex.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
                 buildBody(HttpStatus.NOT_FOUND, ex.getMessage(), exchange)
@@ -25,7 +25,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<?> handleBadRequest(IllegalArgumentException ex, ServerWebExchange exchange) {
+    public ResponseEntity<Map<String, Object>> handleBadRequest(IllegalArgumentException ex, ServerWebExchange exchange) {
         log.warn("400 Bad Request at {}: {}", exchange.getRequest().getPath(), ex.getMessage());
         return ResponseEntity.badRequest().body(
                 buildBody(HttpStatus.BAD_REQUEST, ex.getMessage(), exchange)
@@ -33,7 +33,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<?> handleGeneric(Exception ex, ServerWebExchange exchange) {
+    public ResponseEntity<Map<String, Object>>  handleGeneric(Exception ex, ServerWebExchange exchange) {
         log.error("500 Internal Server Error at {}: {}", exchange.getRequest().getPath(), ex.getMessage(), ex);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
                 buildBody(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage(), exchange)

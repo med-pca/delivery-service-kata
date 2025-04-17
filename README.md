@@ -120,9 +120,4 @@ All errors are returned in a standard format:
 - MapStruct
 - Hexagonal Architecture
 - JUnit 5 + Mockito + StepVerifier
-
-## 🧠 Author
-Mohammed Lyazidi
-
-## 📁 GitLab Delivery
-This project is ready to be pushed to GitLab and submitted using the provided Google Form.
+- SonarQube + JaCoCo for static code analysis and test coverage

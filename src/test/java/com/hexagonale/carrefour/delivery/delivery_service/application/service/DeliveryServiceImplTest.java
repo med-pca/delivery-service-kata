@@ -18,7 +18,7 @@ import java.util.UUID;
 
 import static org.mockito.Mockito.*;
 
-public class DeliveryServiceImplTest {
+class DeliveryServiceImplTest {
 
     private TimeSlotRepository repository;
     private TimeSlotMapper mapper;
